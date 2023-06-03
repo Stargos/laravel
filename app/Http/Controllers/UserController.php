@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Resource\UserResource;
+use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -44,7 +46,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         //
         return new UserResource(auth()->user());
