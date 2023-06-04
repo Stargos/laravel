@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('selections', function (Blueprint $table) {
             $table->id();
-            $table->text('QUES_LIBELLE');
-            $table->unsignedBigInteger('sondage_id');
-            $table->foreign('sondage_id')
+            $table->text('SELEC_LIBELLE');
+            $table->unsignedBigInteger('question_id');
+            $table->foreign('question_id')
             ->references('id')
-            ->on('sondages')
+            ->on('questions')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('question');
+        Schema::dropIfExists('selections');
     }
 };

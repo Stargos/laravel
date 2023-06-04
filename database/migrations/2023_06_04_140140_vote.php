@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('selection', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->text('SELEC_LIBELLE');
-            $table->unsignedBigInteger('question_id');
-            $table->foreign('question_id')
+            $table->date('VOTE_DATE');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('questions')
+            ->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->unsignedBigInteger('selection_id');
+            $table->foreign('selection_id')
+            ->references('id')
+            ->on('selections')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('selection');
+        Schema::dropIfExists('votes');
     }
 };

@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/user/logout', function(Request $request) {
         $request->user()->tokens()->delete();
     });
+    Route::get('/sondages/{id}', [SondageController::class, 'show'])->whereNumber('id');
 });
 
 /*

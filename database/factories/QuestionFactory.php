@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Question>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\questions>
  */
 class QuestionFactory extends Factory
 {
@@ -18,6 +18,8 @@ class QuestionFactory extends Factory
     {
         return [
             //
+            'sondage_id' => fake()->numberBetween(2, 11),
+            'QUES_LIBELLE' => fake()->text(10),
         ];
     }
 }
